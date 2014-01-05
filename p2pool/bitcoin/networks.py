@@ -179,6 +179,49 @@ nets = dict(
         DUST_THRESHOLD=1e8,
     ),
 
+
+    mediterraneancoin=math.Object(
+        P2P_PREFIX='fbc0b6db'.decode('hex'),
+        P2P_PORT=9373,
+        ADDRESS_VERSION=51,
+        RPC_PORT=9372,
+        RPC_CHECK=defer.inlineCallbacks(lambda bitcoind: defer.returnValue(
+            'mediterraneancoinaddress' in (yield bitcoind.rpc_help()) and
+            not (yield bitcoind.rpc_getinfo())['testnet']
+        )),
+        SUBSIDY_FUNC=lambda height: 50*100000000 >> (height + 1)//840000,
+        POW_FUNC=lambda data: pack.IntType(256).unpack(__import__('medcoin_hybrid').getPoWHash(data)),
+        BLOCK_PERIOD=60, # s
+        SYMBOL='MED',
+        CONF_FILE_FUNC=lambda: os.path.join(os.path.join(os.environ['APPDATA'], 'Mediterraneancoin') if platform.system() == 'Windows' else os.path.expanduser('~/Library/Application Support/Mediterraneancoin/') if platform.system() == 'Darwin' else os.path.expanduser('~/.mediterraneancoin'), 'mediterraneancoin.conf'),
+        BLOCK_EXPLORER_URL_PREFIX='http://explorer.mediterraneancoin.org/block/',
+        ADDRESS_EXPLORER_URL_PREFIX='http://explorer.mediterraneancoin.org/address/',
+        TX_EXPLORER_URL_PREFIX='http://explorer.mediterraneancoin.org/tx/',
+        SANE_TARGET_RANGE=(2**256//1000000000 - 1, 2**256//1000 - 1),
+        DUMB_SCRYPT_DIFF=2**16,
+        DUST_THRESHOLD=0.1e8,
+    ),
+    mediterraneancoin_testnet=math.Object(
+        P2P_PREFIX='fcc1b7dc'.decode('hex'),
+        P2P_PORT=19373,
+        ADDRESS_VERSION=111,
+        RPC_PORT=19372,
+        RPC_CHECK=defer.inlineCallbacks(lambda bitcoind: defer.returnValue(
+            'mediterraneancoinaddress' in (yield bitcoind.rpc_help()) and
+            (yield bitcoind.rpc_getinfo())['testnet']
+        )),
+        SUBSIDY_FUNC=lambda height: 50*100000000 >> (height + 1)//840000,
+        POW_FUNC=lambda data: pack.IntType(256).unpack(__import__('medcoin_hybrid').getPoWHash(data)),
+        BLOCK_PERIOD=60, # s
+        SYMBOL='tMED',
+        CONF_FILE_FUNC=lambda: os.path.join(os.path.join(os.environ['APPDATA'], 'Mediterraneancoin') if platform.system() == 'Windows' else os.path.expanduser('~/Library/Application Support/Mediterraneancoin/') if platform.system() == 'Darwin' else os.path.expanduser('~/.mediterraneancoin'), 'mediterraneancoin.conf'),
+        BLOCK_EXPLORER_URL_PREFIX='http://nonexistent-mediterraneancoin-testnet-explorer/block/',
+        ADDRESS_EXPLORER_URL_PREFIX='http://nonexistent-mediterraneancoin-testnet-explorer/address/',
+        TX_EXPLORER_URL_PREFIX='http://nonexistent-mediterraneancoin-testnet-explorer/tx/',
+        SANE_TARGET_RANGE=(2**256//1000000000 - 1, 2**256 - 1),
+        DUMB_SCRYPT_DIFF=2**16,
+        DUST_THRESHOLD=1e8,
+    ),
 )
 for net_name, net in nets.iteritems():
     net.NAME = net_name
