@@ -125,20 +125,20 @@ nets = dict(
 
     mediterraneancoin=math.Object(
         PARENT=networks.nets['mediterraneancoin'],
-        SHARE_PERIOD=30, # seconds
+        SHARE_PERIOD=15, # seconds
         CHAIN_LENGTH=24*60*60//10, # shares
         REAL_CHAIN_LENGTH=24*60*60//10, # shares
         TARGET_LOOKBEHIND=200, # shares
-        SPREAD=3, # blocks
-        IDENTIFIER='e037d5b8c6923410'.decode('hex'),
-        PREFIX='7208c1a53ef629b0'.decode('hex'),
+        SPREAD=5, # blocks
+        IDENTIFIER='737574fe9abcdef1'.decode('hex'),
+        PREFIX= '7a3973eacb014369'.decode('hex'),
         P2P_PORT=9374,
         MIN_TARGET=0,
         MAX_TARGET=2**256//2**20 - 1,
-        PERSIST=True,
+        PERSIST=False,
         WORKER_PORT=9375,
         BOOTSTRAP_ADDRS='xxxx'.split(' '),
-        ANNOUNCE_CHANNEL='#p2pool-med',
+        ANNOUNCE_CHANNEL='#p2pool-alt',
         VERSION_CHECK=lambda v: True,
         VERSION_WARNING=lambda v: 'Upgrade MediterraneanCoin to >=0.8.5.1!' if v < 80501 else None,
     ),
@@ -149,8 +149,8 @@ nets = dict(
         REAL_CHAIN_LENGTH=20*60//3, # shares
         TARGET_LOOKBEHIND=200, # shares
         SPREAD=3, # blocks
-        IDENTIFIER='cca5e24ec6408b1e'.decode('hex'),
-        PREFIX='ad9614f6466a39cf'.decode('hex'),
+        IDENTIFIER='375747fe9abcdef1'.decode('hex'),
+        PREFIX='a79337eacb014369'.decode('hex'),
         P2P_PORT=19374,
         MIN_TARGET=2**256//50 - 1,
         MAX_TARGET=2**256//50 - 1,

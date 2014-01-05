@@ -181,7 +181,7 @@ nets = dict(
 
 
     mediterraneancoin=math.Object(
-        P2P_PREFIX='fbc0b6db'.decode('hex'),
+        P2P_PREFIX='c0b0e0f0'.decode('hex'),
         P2P_PORT=9373,
         ADDRESS_VERSION=51,
         RPC_PORT=9372,
@@ -189,7 +189,8 @@ nets = dict(
             'mediterraneancoinaddress' in (yield bitcoind.rpc_help()) and
             not (yield bitcoind.rpc_getinfo())['testnet']
         )),
-        SUBSIDY_FUNC=lambda height: 50*100000000 >> (height + 1)//840000,
+        //SUBSIDY_FUNC=lambda height: 50*100000000 >> (height + 1)//840000,
+	SUBSIDY_FUNC=lambda height: 20*100000000 >> (height / 1036800),
         POW_FUNC=lambda data: pack.IntType(256).unpack(__import__('medcoin_hybrid').getPoWHash(data)),
         BLOCK_PERIOD=60, # s
         SYMBOL='MED',
@@ -202,7 +203,7 @@ nets = dict(
         DUST_THRESHOLD=0.1e8,
     ),
     mediterraneancoin_testnet=math.Object(
-        P2P_PREFIX='fcc1b7dc'.decode('hex'),
+        P2P_PREFIX='0f0b0e0f'.decode('hex'),
         P2P_PORT=19373,
         ADDRESS_VERSION=111,
         RPC_PORT=19372,
@@ -210,7 +211,7 @@ nets = dict(
             'mediterraneancoinaddress' in (yield bitcoind.rpc_help()) and
             (yield bitcoind.rpc_getinfo())['testnet']
         )),
-        SUBSIDY_FUNC=lambda height: 50*100000000 >> (height + 1)//840000,
+        SUBSIDY_FUNC=lambda height: 20*100000000 >> (height / 1036800),
         POW_FUNC=lambda data: pack.IntType(256).unpack(__import__('medcoin_hybrid').getPoWHash(data)),
         BLOCK_PERIOD=60, # s
         SYMBOL='tMED',
