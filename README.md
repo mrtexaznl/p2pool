@@ -1,3 +1,6 @@
+WORK IN PROGRESS!!! DO NOT USE!!!
+=========================
+
 Requirements:
 -------------------------
 Generic:
@@ -84,11 +87,24 @@ http://stackoverflow.com/questions/6034390/compiling-with-cython-and-mingw-produ
 Notes for MediterraneanCoin:
 =========================
 WORK IN PROGRESS!!!
+=========================
 
+Requirements:
+-------------------------
+In order to run P2Pool with the MediterraneanCoin network, you would need to build and install the
+medcoin_hybrid module that includes the HybridScryptHash256 proof of work code that MediterraneanCoin uses for hashes.
+
+Linux:
+
+    cd medcoin_hybrid
+    sudo python setup.py install
+    
+    
+    
 
 Running P2Pool:
 -------------------------
-Run P2Pool with the "--net litecoin" option.
+Run P2Pool with the "--net mediterraneancoin" option.
 Run your miner program, connecting to 127.0.0.1 on port 9327.
 Forward port 9338 to the host running P2Pool.
 
