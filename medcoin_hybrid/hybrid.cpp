@@ -1028,9 +1028,12 @@ inline uint256 Hash(const T1 pbegin, const T1 pend)
     return hash2;
 }
 
-void hybridScryptHash256(const char *input, char *output, unsigned int nBits) {
- 
-	int nSize = nBits >> 24;
+int crypto_scrypt(const uint8_t *, size_t, const uint8_t *, size_t, uint64_t,
+    uint32_t, uint32_t, uint8_t *, size_t);
+
+void hybridScryptHash256(const char *input, char *output) {
+
+	int nSize = input[75];
 
 	int pos = /*sizeof(dataFinal)*/ 271 - 1 - nSize;
 
