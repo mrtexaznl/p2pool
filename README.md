@@ -43,7 +43,7 @@ Windows (mingw):
 
 In bash type this:
 
-    cd litecoin_scrypt
+    cd medcoin_hybrid
     C:\Python27\python.exe setup.py build --compile=mingw32 install
 
 Windows (microsoft visual c++)
@@ -53,7 +53,7 @@ In bash type this:
 
     SET VS90COMNTOOLS=%VS110COMNTOOLS%	           # For visual c++ 2012
     SET VS90COMNTOOLS=%VS100COMNTOOLS%             # For visual c++ 2010
-    cd litecoin_scrypt
+    cd medcoin_hybrid
     C:\Python27\python.exe setup.py build --compile=mingw32 install
 
 
