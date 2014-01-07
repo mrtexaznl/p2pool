@@ -33,6 +33,9 @@ medcoin_hybrid module that includes the HybridScryptHash256 proof of work code t
 
 Linux:
 
+note: if running on a fresh Ubuntu machine, you will need also the following packages:
+sudo aptitude install build-essential python2.7-dev
+
     cd medcoin_hybrid
     sudo python setup.py install
 
