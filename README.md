@@ -82,8 +82,9 @@ P2Pool for MediterraneanCoin listens to its peers on port 9374; if you are behin
 
     cgminer -o http://localhost:8080 -u test -p test -Q 0
     
+or the modified bfgminer:
 
-
+    sudo ./bfgminer --submit-stale -o http://localhost:8080 -u test -p x -Q 0 -S all -T --verbose
 
 
 
