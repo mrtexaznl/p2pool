@@ -1,4 +1,4 @@
-WORK IN PROGRESS!!! DO NOT USE YET!!!
+WORK IN PROGRESS!!! can be used for tests
 =========================
 
 Wiki on P2Pool: 
