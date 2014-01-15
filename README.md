@@ -1,5 +1,4 @@
-WORK IN PROGRESS!!! can be used for tests
-=========================
+
 
 Wiki on P2Pool: 
 
