@@ -267,7 +267,7 @@ def main(args, net, datadir_path, merged_urls, worker_endpoint):
                             return
 
                         if share.pow_hash == 0:
-                            share.pow_hash = net.PARENT.POW_FUNC(bitcoin_data.block_header_type.pack(share.header))
+                            share.pow_hash = self.net.PARENT.POW_FUNC(bitcoin_data.block_header_type.pack(share.header))
 
                         if share.pow_hash <= share.header['bits'].target and abs(share.timestamp - time.time()) < 10*60:
                             yield deferral.sleep(random.expovariate(1/60))
